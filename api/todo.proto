@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package api;
+
+option go_package = "./api";
+
+service TodoService {
+    rpc Todos(TodosRequest) returns (stream TodosResponse) {}
+    rpc Todo(TodoRequest) returns (TodoResponse) {};
+}
+
+message Todo {
+    string id = 1;
+    string content = 2;
+    bool completed = 3;
+}
+
+message TodosRequest {}
+
+message TodosResponse {
+    Todo todo = 1;
+}
+
+message TodoRequest {
+    string id = 1;
+}
+
+message TodoResponse {
+    Todo todo = 1;
+}
