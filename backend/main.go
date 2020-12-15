@@ -31,6 +31,7 @@ func (s *service) Todos(r *api.TodosRequest, stream api.TodoService_TodosServer)
 func (s *service) Todo(ctx context.Context, r *api.TodoRequest) (*api.TodoResponse, error) {
 	find := func(id string) *api.Todo {
 		for i := 0; i < len(todos); i++ {
+			log.Printf("current id %s %s\n", id, todos[i].GetId())
 			if todos[i].GetId() == id {
 				return todos[i]
 			}
